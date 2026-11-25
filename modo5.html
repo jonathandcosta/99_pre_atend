@@ -1,0 +1,1336 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expansão 99Food Natal-RN | Cadastro de Parceiros</title>
+    <style>
+      :root {
+        --amarelo-99: #ffce00;
+        --amarelo-hover: #e5b800;
+        --preto-texto: #1e1e1e;
+        --cinza-fundo: #f4f5f7;
+        --branco: #ffffff;
+        --cinza-borda: #d8d8d8;
+        --verde-whats: #25d366;
+        --verde-hover: #1ebe57;
+        --verde-parceria: #1db954;
+        --verde-parceria-claro: #e9f9ef;
+        --destaque-natal: #fff8d6;
+        --alerta-urgente-bg: #fff1f0;
+        --alerta-urgente-borda: #ffa39e;
+        --alerta-urgente-texto: #cf1322;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+      }
+
+      body {
+        background-color: var(--cinza-fundo);
+        color: var(--preto-texto);
+        display: flex;
+        justify-content: center;
+        padding: 20px 15px 60px;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 480px;
+      }
+
+      /* Cabeçalho (Mantido Original) */
+      .header {
+        background: var(--branco);
+        border-radius: 16px;
+        padding: 24px 20px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin-bottom: 16px;
+        border-top: 6px solid var(--amarelo-99);
+      }
+
+      .avatar {
+        width: 84px;
+        height: 84px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--amarelo-99);
+        margin-bottom: 10px;
+        background-color: #ddd;
+      }
+
+      .badge {
+        display: inline-block;
+        background-color: var(--amarelo-99);
+        color: var(--preto-texto);
+        font-size: 12px;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 20px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .header h1 {
+        font-size: 20px;
+        margin-bottom: 6px;
+      }
+
+      .header p {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.4;
+      }
+
+      /* Banner Pré-Lançamento (Mantido Original) */
+      .launch-banner {
+        background-color: var(--destaque-natal);
+        border: 1px solid var(--amarelo-99);
+        border-radius: 12px;
+        padding: 12px 15px;
+        font-size: 13px;
+        color: var(--preto-texto);
+        margin-bottom: 18px;
+        line-height: 1.4;
+      }
+
+      /* Títulos de Seção */
+      .section-title {
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #666;
+        margin: 24px 0 10px 4px;
+        letter-spacing: 0.5px;
+      }
+
+      /* Botão Suspenso - Iniciar Cadastro (Mantido Original) */
+      .dropdown-wrapper {
+        background: var(--branco);
+        border-radius: 14px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        margin-bottom: 12px;
+        overflow: hidden;
+      }
+
+      .btn-toggle-cadastro {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 18px;
+        background-color: var(--amarelo-99);
+        color: var(--preto-texto);
+        border: none;
+        font-weight: 700;
+        font-size: 15px;
+        cursor: pointer;
+        text-align: left;
+        transition: background-color 0.2s ease;
+      }
+
+      .btn-toggle-cadastro:hover {
+        background-color: var(--amarelo-hover);
+      }
+
+      .toggle-icon {
+        font-size: 18px;
+        font-weight: bold;
+        transition: transform 0.25s ease;
+      }
+
+      .btn-toggle-cadastro.active .toggle-icon {
+        transform: rotate(180deg);
+      }
+
+      .cadastro-collapse {
+        display: none;
+        padding: 18px;
+        border-top: 1px solid #efefef;
+      }
+
+      .cadastro-collapse.show {
+        display: block;
+        animation: fadeIn 0.25s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Botão Já Tenho Minha Loja Lançada */
+      .btn-loja-lancada {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 17px 18px;
+        margin-bottom: 16px;
+        background-color: var(--preto-texto);
+        color: var(--branco);
+        border: none;
+        border-radius: 14px;
+        font-weight: 700;
+        font-size: 15px;
+        cursor: pointer;
+        text-align: left;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+        transition:
+          transform 0.1s ease,
+          background-color 0.2s ease;
+      }
+
+      .btn-loja-lancada:hover {
+        background-color: #2e2e2e;
+      }
+
+      .btn-loja-lancada:active {
+        transform: scale(0.98);
+      }
+
+      .btn-loja-lancada .btn-subtext {
+        color: var(--amarelo-99);
+      }
+
+      /* Formulários */
+      .form-group {
+        margin-bottom: 12px;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #333;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid var(--cinza-borda);
+        border-radius: 10px;
+        font-size: 14px;
+        background-color: #fafafa;
+        color: var(--preto-texto);
+        outline: none;
+        transition: border-color 0.2s;
+        resize: vertical;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--preto-texto);
+        background-color: var(--branco);
+      }
+
+      /* Botões Gerais */
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 16px 18px;
+        margin-bottom: 12px;
+        border-radius: 12px;
+        border: none;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        transition:
+          transform 0.1s ease,
+          background-color 0.2s ease;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+        text-align: left;
+      }
+
+      .btn:active {
+        transform: scale(0.98);
+      }
+
+      .btn-submit-form {
+        background-color: var(--preto-texto);
+        color: var(--amarelo-99);
+        margin-top: 8px;
+        margin-bottom: 0;
+      }
+
+      .btn-submit-form:hover {
+        background-color: #333333;
+      }
+
+      .btn-whats {
+        background-color: var(--verde-whats);
+        color: var(--branco);
+      }
+
+      .btn-whats:hover {
+        background-color: var(--verde-hover);
+      }
+
+      .btn-subtext {
+        display: block;
+        font-size: 12px;
+        font-weight: 400;
+        opacity: 0.9;
+        margin-top: 2px;
+      }
+
+      /* CARD PROGRAMA DE PARCERIA (Estilo Imagem Anexo) */
+      .partnership-section {
+        background-color: var(--amarelo-99);
+        border-radius: 16px;
+        padding: 18px 14px;
+        margin-bottom: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      }
+
+      .partnership-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--preto-texto);
+        margin-bottom: 14px;
+      }
+
+      .plan-tabs {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+        background: rgba(0, 0, 0, 0.08);
+        padding: 4px;
+        border-radius: 12px;
+      }
+
+      .plan-tab {
+        flex: 1;
+        padding: 10px 8px;
+        border: none;
+        border-radius: 9px;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        background: transparent;
+        color: var(--preto-texto);
+        transition: all 0.2s ease;
+      }
+
+      .plan-tab.active {
+        background: var(--branco);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .plan-card {
+        display: none;
+        background: var(--branco);
+        border-radius: 14px;
+        padding: 16px;
+      }
+
+      .plan-card.active {
+        display: block;
+        animation: fadeIn 0.2s ease;
+      }
+
+      .plan-card h3 {
+        font-size: 17px;
+        font-weight: 800;
+        margin-bottom: 10px;
+        color: var(--preto-texto);
+      }
+
+      .plan-banner-green {
+        background-color: var(--verde-parceria);
+        color: var(--branco);
+        padding: 10px 12px;
+        border-radius: 10px;
+        font-size: 12.5px;
+        font-weight: 600;
+        line-height: 1.35;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .plan-banner-gray {
+        background-color: #f2f3f5;
+        color: var(--preto-texto);
+        padding: 10px 12px;
+        border-radius: 10px;
+        font-size: 12.5px;
+        font-weight: 600;
+        line-height: 1.35;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .plan-icon-circle {
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        border-radius: 50%;
+        background: var(--branco);
+        color: var(--verde-parceria);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+      }
+
+      .plan-banner-gray .plan-icon-circle {
+        color: var(--preto-texto);
+      }
+
+      .rate-box {
+        background-color: var(--verde-parceria-claro);
+        border-radius: 10px;
+        padding: 11px 14px;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .rate-box.neutral {
+        background-color: #f7f8fa;
+      }
+
+      .rate-value {
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--verde-parceria);
+      }
+
+      .rate-box.neutral .rate-value {
+        color: var(--preto-texto);
+      }
+
+      .rate-old {
+        font-size: 12px;
+        color: #888;
+        text-decoration: line-through;
+        margin-left: 4px;
+        font-weight: 500;
+      }
+
+      .rate-label {
+        display: block;
+        font-size: 12px;
+        color: #555;
+        margin-top: 2px;
+      }
+
+      .pill-green {
+        background-color: var(--verde-parceria);
+        color: var(--branco);
+        font-size: 11px;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 20px;
+      }
+
+      .plan-extra {
+        padding: 10px 4px;
+        border-bottom: 1px solid #efefef;
+      }
+
+      .plan-extra:last-of-type {
+        border-bottom: none;
+      }
+
+      .plan-extra strong {
+        display: block;
+        font-size: 14px;
+        color: var(--preto-texto);
+        margin-bottom: 3px;
+      }
+
+      .plan-extra p {
+        font-size: 12px;
+        color: #666;
+        line-height: 1.4;
+      }
+
+      .plan-checks {
+        margin-top: 10px;
+        padding-top: 8px;
+        border-top: 1px solid #efefef;
+      }
+
+      .plan-check-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 12.5px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 6px;
+      }
+
+      .check-dot {
+        color: var(--verde-parceria);
+        font-weight: bold;
+      }
+
+      /* Destaque Atendimento Urgente vs Normal */
+      .urgent-box {
+        background-color: var(--alerta-urgente-bg);
+        border: 1px solid var(--alerta-urgente-borda);
+        border-radius: 14px;
+        padding: 16px;
+        margin-bottom: 12px;
+      }
+
+      .urgent-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--alerta-urgente-texto);
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 6px;
+      }
+
+      .urgent-box p {
+        font-size: 13px;
+        color: #444;
+        line-height: 1.4;
+        margin-bottom: 12px;
+      }
+
+      .btn-urgent-call {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--branco);
+        border: 1px solid var(--alerta-urgente-borda);
+        color: var(--alerta-urgente-texto);
+        padding: 12px 15px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+      }
+
+      /* Botões de Categorias FAQ */
+      .faq-category-wrapper {
+        margin-bottom: 12px;
+      }
+
+      .btn-faq-category {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 16px 18px;
+        background-color: var(--branco);
+        color: var(--preto-texto);
+        border: 1px solid var(--cinza-borda);
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 14.5px;
+        cursor: pointer;
+        text-align: left;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        transition: all 0.2s ease;
+      }
+
+      .btn-faq-category.active {
+        background-color: var(--preto-texto);
+        color: var(--amarelo-99);
+        border-color: var(--preto-texto);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      .faq-category-content {
+        display: none;
+        background: #eaecef;
+        padding: 12px;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        border: 1px solid var(--cinza-borda);
+        border-top: none;
+      }
+
+      .faq-category-content.show {
+        display: block;
+        animation: fadeIn 0.2s ease;
+      }
+
+      /* Acordeão Interno das Perguntas */
+      details {
+        background: var(--branco);
+        border-radius: 10px;
+        margin-bottom: 8px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+        overflow: hidden;
+      }
+
+      details:last-child {
+        margin-bottom: 0;
+      }
+
+      summary {
+        padding: 14px 16px;
+        font-weight: 600;
+        font-size: 13.5px;
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary::after {
+        content: "+";
+        font-size: 18px;
+        font-weight: bold;
+        color: #666;
+      }
+
+      details[open] summary::after {
+        content: "−";
+      }
+
+      .details-content {
+        padding: 0 16px 14px;
+        font-size: 13.5px;
+        color: #444;
+        line-height: 1.5;
+        border-top: 1px solid #f0f0f0;
+        padding-top: 10px;
+      }
+
+      .details-content ul {
+        padding-left: 18px;
+        margin-top: 6px;
+      }
+
+      .details-content li {
+        margin-bottom: 5px;
+      }
+
+      /* POP-UP (MODAL) - JÁ TENHO MINHA LOJA LANÇADA */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.65);
+        z-index: 999;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+      }
+
+      .modal-overlay.open {
+        display: flex;
+        animation: fadeIn 0.2s ease;
+      }
+
+      .modal-box {
+        background: var(--branco);
+        width: 100%;
+        max-width: 440px;
+        border-radius: 16px;
+        padding: 22px 20px;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        border-top: 6px solid var(--amarelo-99);
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 14px;
+        right: 16px;
+        background: #f0f0f0;
+        border: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        color: #333;
+      }
+
+      .modal-box h3 {
+        font-size: 18px;
+        margin-bottom: 4px;
+        padding-right: 30px;
+      }
+
+      .modal-box p {
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 16px;
+      }
+
+      .footer {
+        text-align: center;
+        font-size: 12px;
+        color: #888;
+        margin-top: 28px;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- CABEÇALHO (MANTIDO ORIGINAL) -->
+      <header class="header">
+        <img
+          src="./assets/img/perfil.png"
+          alt="Consultor 99Food"
+          class="avatar"
+        />
+        <div>
+          <span class="badge">Expansão 99Food • Natal-RN</span>
+        </div>
+        <h1>Jonathan Costa</h1>
+        <p>
+          Credenciamento de Restaurantes e Lanchonetes para o lançamento em
+          Natal.
+        </p>
+      </header>
+
+      <!-- AVISO DE LANÇAMENTO (MANTIDO ORIGINAL) -->
+      <div class="launch-banner">
+        <strong>📍Pré-Lançamento Natal-RN:</strong> Credencie sua loja
+        antecipadamente para garantir visibilidade desde o primeiro dia de
+        operação na cidade.
+      </div>
+
+      <!-- BOTÃO SUSPENSO PARA INICIAR CADASTRO (MANTIDO ORIGINAL) -->
+      <div class="section-title">🏪 Credenciamento & Suporte Lojista</div>
+      <div class="dropdown-wrapper">
+        <button
+          type="button"
+          class="btn-toggle-cadastro"
+          id="btnToggleForm"
+          onclick="toggleFormulario()"
+        >
+          <div>
+            Iniciar Cadastro da Loja
+            <span class="btn-subtext"
+              >Toque aqui para preencher os dados básicos</span
+            >
+          </div>
+          <span class="toggle-icon">▼</span>
+        </button>
+
+        <div class="cadastro-collapse" id="formContainer">
+          <form id="cadastroForm" onsubmit="enviarWhatsApp(event)">
+            <div class="form-group">
+              <label for="nomeLoja">Nome da Loja / Restaurante *</label>
+              <input
+                type="text"
+                id="nomeLoja"
+                placeholder="Ex: Burger do Potiguar"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="cnpj">CNPJ (MEI, ME, LTDA) *</label>
+              <input
+                type="text"
+                id="cnpj"
+                placeholder="00.000.000/0001-00"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="responsavel">Nome do Responsável *</label>
+              <input
+                type="text"
+                id="responsavel"
+                placeholder="Seu nome"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="entrega">Modelo de Entrega desejado</label>
+              <select id="entrega">
+                <option value="Entrega Parceira 99 (Entregadores do App)">
+                  Entrega Parceira 99 (Entregadores do App)
+                </option>
+                <option value="Entrega Própria (Meus motoboys)">
+                  Entrega Própria (Meus motoboys)
+                </option>
+                <option value="Ainda quero entender as opções">
+                  Ainda quero entender as opções
+                </option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-submit-form">
+              <div>
+                Enviar dados pelo WhatsApp
+                <span class="btn-subtext"
+                  >Concluir e falar com o consultor</span
+                >
+              </div>
+              <span>➔</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- NOVO BOTÃO: JÁ TENHO MINHA LOJA LANÇADA (ABRE POP-UP) -->
+      <button
+        type="button"
+        class="btn-loja-lancada"
+        onclick="abrirModalLojaLancada()"
+      >
+        <div>
+          Já tenho minha loja lançada
+          <span class="btn-subtext"
+            >Relatar dificuldade, ajuste ou suporte pós-lançamento</span
+          >
+        </div>
+        <span>➔</span>
+      </button>
+
+      <!-- CARD PROGRAMA DE PARCERIA (BASEADO NA IMAGEM) -->
+      <div class="section-title">🤝 Condições Comerciais</div>
+      <div class="partnership-section">
+        <div class="partnership-title">Programa de parceria</div>
+
+        <!-- Seletor de Plano -->
+        <div class="plan-tabs">
+          <button
+            type="button"
+            class="plan-tab active"
+            id="tab99"
+            onclick="selecionarPlano('99')"
+          >
+            Entrega feita pela 99
+          </button>
+          <button
+            type="button"
+            class="plan-tab"
+            id="tabPropria"
+            onclick="selecionarPlano('propria')"
+          >
+            Entrega própria
+          </button>
+        </div>
+
+        <!-- PLANO 1: ENTREGA FEITA PELA 99 -->
+        <div class="plan-card active" id="plano99">
+          <h3>Entrega feita pela 99</h3>
+          <div class="plan-banner-green">
+            <div class="plan-icon-circle">🛵</div>
+            <div>
+              Cuidamos das entregas para você ter mais liberdade e focar no
+              negócio
+            </div>
+          </div>
+
+          <div class="rate-box">
+            <div>
+              <span class="rate-value">8.9%</span>
+              <span class="rate-old">12%</span>
+              <span class="rate-label">Comissão</span>
+            </div>
+            <span class="pill-green">Menor</span>
+          </div>
+
+          <div class="rate-box">
+            <div>
+              <span class="rate-value">0</span>
+              <span class="rate-old">R$150</span>
+              <span class="rate-label">Mensalidade</span>
+            </div>
+            <span class="pill-green">Grátis</span>
+          </div>
+
+          <div class="rate-box">
+            <div>
+              <span class="rate-value">0%</span>
+              <span class="rate-old">1.59%</span>
+              <span class="rate-label">Taxa de saque semanal</span>
+            </div>
+            <span class="pill-green">Grátis</span>
+          </div>
+
+          <div class="plan-extra">
+            <strong>3.2%</strong>
+            <p>
+              Taxa de intermediação/administrativa: cobrada somente quando o
+              cliente paga na plataforma 99Food
+            </p>
+          </div>
+
+          <div class="plan-extra">
+            <strong>Custos logísticos</strong>
+            <p>
+              Cobrança de taxas de entrega baseada na quilometragem. Os detalhes
+              podem ser consultados durante a assinatura do contrato da loja.
+            </p>
+          </div>
+
+          <div class="plan-checks">
+            <div class="plan-check-item">
+              <span class="check-dot">✔</span>
+              <span
+                >A 99Food é responsável por todas as entregas das lojas</span
+              >
+            </div>
+            <div class="plan-check-item">
+              <span class="check-dot">✔</span>
+              <span>Acompanhe o progresso da entrega em tempo real</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLANO 2: ENTREGA PRÓPRIA -->
+        <div class="plan-card" id="planoPropria">
+          <h3>Entrega própria</h3>
+          <div class="plan-banner-gray">
+            <div class="plan-icon-circle">🏪</div>
+            <div>Você é responsável por todo processo de entrega</div>
+          </div>
+
+          <div class="rate-box neutral">
+            <div>
+              <span class="rate-value">10.9%</span>
+              <span class="rate-old">12%</span>
+              <span class="rate-label">Comissão</span>
+            </div>
+          </div>
+
+          <div class="rate-box">
+            <div>
+              <span class="rate-value">0</span>
+              <span class="rate-old">R$150</span>
+              <span class="rate-label">Mensalidade</span>
+            </div>
+            <span class="pill-green">Grátis</span>
+          </div>
+
+          <div class="rate-box">
+            <div>
+              <span class="rate-value">0%</span>
+              <span class="rate-old">1.59%</span>
+              <span class="rate-label">Taxa de saque semanal</span>
+            </div>
+            <span class="pill-green">Grátis</span>
+          </div>
+
+          <div class="plan-extra">
+            <strong>3.2%</strong>
+            <p>
+              Taxa de intermediação/administrativa: cobrada somente quando o
+              cliente paga na plataforma 99Food
+            </p>
+          </div>
+
+          <div class="plan-extra">
+            <strong>Custos logísticos</strong>
+            <p>Isento de taxa de entrega</p>
+          </div>
+
+          <div class="plan-checks">
+            <div class="plan-check-item">
+              <span class="check-dot">✔</span>
+              <span>Você será responsável pela entrega</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CENTRAL DE ATENDIMENTO: URGENTE VS DÚVIDAS GERAIS -->
+      <div class="section-title">🎧 Canais de Atendimento</div>
+
+      <!-- ATENDIMENTO URGENTE (CENTRAL 99FOOD 4020-2499) -->
+      <div class="urgent-box">
+        <div class="urgent-header">
+          <span>🚨 Atendimento Urgente / Operacional</span>
+        </div>
+        <p>
+          Problemas críticos no Portal do Lojista, bloqueio de loja, falha em
+          pedido em andamento ou urgência financeira? Fale direto com a
+          <strong>Central Oficial 99Food</strong>:
+        </p>
+        <a href="tel:40202499" class="btn-urgent-call">
+          <span>Ligar para Central 99Food (Lojistas)</span>
+          <span>4020-2499 ➔</span>
+        </a>
+      </div>
+
+      <!-- DÚVIDAS MENOS URGENTES (SEU WHATSAPP) -->
+      <a
+        href="https://wa.me/5584999043539?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%2099Food%20em%20Natal-RN."
+        target="_blank"
+        class="btn btn-whats"
+      >
+        <div>
+          Outras dúvidas (Menos urgentes)
+          <span class="btn-subtext"
+            >Taxas, cardápio, documentos ou visita na loja</span
+          >
+        </div>
+        <span>WhatsApp</span>
+      </a>
+
+      <!-- DÚVIDAS FREQUENTES EM BOTÕES DISTINTOS -->
+      <div class="section-title">❓ Dúvidas Frequentes (Selecione o tema)</div>
+
+      <!-- BOTÃO 1: DÚVIDAS SOBRE CADASTRO -->
+      <div class="faq-category-wrapper">
+        <button
+          type="button"
+          class="btn-faq-category"
+          id="btnFaqCadastro"
+          onclick="toggleFaqCategoria('faqCadastro', 'btnFaqCadastro')"
+        >
+          <span>📋 Dúvidas sobre Cadastro da Loja</span>
+          <span>▼</span>
+        </button>
+        <div class="faq-category-content" id="faqCadastro">
+          <details>
+            <summary>Quais documentos são necessários para cadastrar?</summary>
+            <div class="details-content">
+              Para agilizar o credenciamento da sua loja, tenha em mãos:
+              <ul>
+                <li>
+                  <strong>Cartão CNPJ ativo</strong> (MEI, ME, LTDA) com CNAE de
+                  alimentação ou bebidas.
+                </li>
+                <li>
+                  <strong>RG ou CNH</strong> do sócio/responsável legal pelo
+                  CNPJ.
+                </li>
+                <li>
+                  <strong>Conta bancária PJ</strong> vinculada ao mesmo CNPJ da
+                  loja.
+                </li>
+                <li>
+                  <strong>Cardápio e Logotipo</strong> (PDF, foto ou link de
+                  outro app).
+                </li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>Posso cadastrar minha loja usando MEI?</summary>
+            <div class="details-content">
+              <strong>Sim!</strong> O 99Food aceita MEI normalmente, desde que o
+              CNPJ esteja ativo e possua um CNAE relacionado à alimentação,
+              lanchonete, restaurante, doceria ou bebidas.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              Posso receber os pagamentos na minha conta PF (CPF)?
+            </summary>
+            <div class="details-content">
+              Não. Por regra de segurança financeira, a conta bancária
+              cadastrada no Portal do Lojista precisa estar vinculada ao
+              <strong>mesmo CNPJ</strong> da loja (inclusive para MEI, que deve
+              usar conta PJ).
+            </div>
+          </details>
+
+          <details>
+            <summary>Quanto tempo demora para aprovar a loja?</summary>
+            <div class="details-content">
+              Com a documentação correta e o cardápio básico enviado, a análise
+              costuma levar entre <strong>24h e 72h úteis</strong>.
+            </div>
+          </details>
+
+          <details>
+            <summary>Como funciona o cadastro do cardápio?</summary>
+            <div class="details-content">
+              Basta me enviar o link ou arquivo do seu cardápio atual
+              (Instagram, PDF, WhatsApp ou outro app) que auxiliamos na
+              estruturação para deixar a loja pronta para o lançamento.
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- BOTÃO 2: DÚVIDAS SOBRE LOJAS JÁ LANÇADAS -->
+      <div class="faq-category-wrapper">
+        <button
+          type="button"
+          class="btn-faq-category"
+          id="btnFaqLancadas"
+          onclick="toggleFaqCategoria('faqLancadas', 'btnFaqLancadas')"
+        >
+          <span>🚀 Dúvidas sobre Lojas já Lançadas</span>
+          <span>▼</span>
+        </button>
+        <div class="faq-category-content" id="faqLancadas">
+          <details>
+            <summary>Como funcionam os repasses e saques semanais?</summary>
+            <div class="details-content">
+              Os valores das vendas concluídas ficam disponíveis no Portal do
+              Lojista para repasse semanal direto na conta bancária PJ
+              cadastrada, com <strong>taxa zero de saque</strong> na condição
+              promocional.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              Como altero horários de funcionamento ou pauso a loja?
+            </summary>
+            <div class="details-content">
+              Dentro do
+              <strong>Portal do Lojista / App 99Food Parceiro</strong>, na aba
+              <em>Configurações da Loja > Horários</em>, você pode ajustar os
+              turnos de cada dia ou ativar a pausa temporária em momentos de
+              pico.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              Posso trocar meu modelo de entrega depois de lançada?
+            </summary>
+            <div class="details-content">
+              Sim. Caso queira migrar entre
+              <strong>Entrega feita pela 99</strong> e
+              <strong>Entrega própria</strong>, a solicitação pode ser feita
+              pelo Portal do Lojista ou com apoio da nossa equipe comercial.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              O entregador 99 atrasou ou houve problema no pedido, o que fazer?
+            </summary>
+            <div class="details-content">
+              Para ocorrências em tempo real com pedidos em andamento, utilize o
+              botão de <strong>Ajuda no Pedido</strong> dentro do painel da loja
+              ou ligue imediatamente para a Central de Lojistas no
+              <strong>4020-2499</strong>.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              Como ativar promoções e cupons para ganhar mais visibilidade?
+            </summary>
+            <div class="details-content">
+              No Portal do Lojista, acesse o menu
+              <strong>Marketing / Promoções</strong> para participar das
+              campanhas oficiais da 99Food na sua região e destacar sua vitrine
+              no aplicativo.
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <footer class="footer">
+        Canal de Expansão e Credenciamento • Natal - RN<br />
+        Atendimento comercial: Segunda a Sábado, das 08h às 19h.
+      </footer>
+    </div>
+
+    <!-- POP-UP (MODAL): JÁ TENHO MINHA LOJA LANÇADA -->
+    <div
+      class="modal-overlay"
+      id="modalLojaLancada"
+      onclick="fecharModalFora(event)"
+    >
+      <div class="modal-box">
+        <button
+          type="button"
+          class="modal-close"
+          onclick="fecharModalLojaLancada()"
+        >
+          ×
+        </button>
+        <h3>Suporte • Loja já Lançada</h3>
+        <p>
+          Preencha os dados abaixo para enviar sua solicitação direto no meu
+          WhatsApp:
+        </p>
+
+        <form onsubmit="enviarSuporteLojaLancada(event)">
+          <div class="form-group">
+            <label for="lojaLancadaNome">Nome da Loja *</label>
+            <input
+              type="text"
+              id="lojaLancadaNome"
+              placeholder="Ex: Pizzaria Natal"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="lojaLancadaCidade">Cidade da Loja *</label>
+            <input
+              type="text"
+              id="lojaLancadaCidade"
+              placeholder="Ex: Natal - RN"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="lojaLancadaProblema"
+              >Descreva o problema ou dificuldade *</label
+            >
+            <textarea
+              id="lojaLancadaProblema"
+              rows="4"
+              placeholder="Ex: Preciso de ajuda com alteração no cardápio, repasse financeiro, horário de funcionamento..."
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-whats" style="margin-bottom: 0">
+            <div>
+              Enviar pelo WhatsApp
+              <span class="btn-subtext"
+                >Encaminhar relato para atendimento</span
+              >
+            </div>
+            <span>➔</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // COLOQUE SEU NÚMERO AQUI (apenas números, com DDI 55 e DDD 84)
+      const numeroWhatsApp = "5584999043539";
+
+      // 1. Abre e fecha o formulário suspenso de Novo Cadastro
+      function toggleFormulario() {
+        const btn = document.getElementById("btnToggleForm");
+        const container = document.getElementById("formContainer");
+
+        btn.classList.toggle("active");
+        container.classList.toggle("show");
+      }
+
+      // 2. Envia Novo Cadastro para o WhatsApp
+      function enviarWhatsApp(event) {
+        event.preventDefault();
+
+        const nomeLoja = document.getElementById("nomeLoja").value.trim();
+        const cnpj = document.getElementById("cnpj").value.trim();
+        const responsavel = document.getElementById("responsavel").value.trim();
+        const entrega = document.getElementById("entrega").value;
+
+        const mensagem = `Olá! Quero cadastrar minha loja no *99Food Natal-RN* 🚀
+
+*Dados do Estabelecimento:*
+• *Loja:* ${nomeLoja}
+• *CNPJ:* ${cnpj}
+• *Responsável:* ${responsavel}
+• *Entrega:* ${entrega}
+
+Aguardo orientações para seguir com os documentos!`;
+
+        const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+        window.open(url, "_blank");
+      }
+
+      // 3. Controle do Pop-up (Modal) "Já tenho minha loja lançada"
+      function abrirModalLojaLancada() {
+        document.getElementById("modalLojaLancada").classList.add("open");
+      }
+
+      function fecharModalLojaLancada() {
+        document.getElementById("modalLojaLancada").classList.remove("open");
+      }
+
+      function fecharModalFora(event) {
+        if (event.target.id === "modalLojaLancada") {
+          fecharModalLojaLancada();
+        }
+      }
+
+      function enviarSuporteLojaLancada(event) {
+        event.preventDefault();
+
+        const nome = document.getElementById("lojaLancadaNome").value.trim();
+        const cidade = document
+          .getElementById("lojaLancadaCidade")
+          .value.trim();
+        const problema = document
+          .getElementById("lojaLancadaProblema")
+          .value.trim();
+
+        const mensagem = `Olá! *Já tenho minha loja lançada no 99Food* e preciso de suporte 🏪
+
+• *Nome da Loja:* ${nome}
+• *Cidade:* ${cidade}
+• *Relato / Dificuldade:* ${problema}`;
+
+        const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+        window.open(url, "_blank");
+        fecharModalLojaLancada();
+      }
+
+      // 4. Alternar Abas do Programa de Parceria
+      function selecionarPlano(plano) {
+        const tab99 = document.getElementById("tab99");
+        const tabPropria = document.getElementById("tabPropria");
+        const plano99 = document.getElementById("plano99");
+        const planoPropria = document.getElementById("planoPropria");
+
+        if (plano === "99") {
+          tab99.classList.add("active");
+          tabPropria.classList.remove("active");
+          plano99.classList.add("active");
+          planoPropria.classList.remove("active");
+        } else {
+          tabPropria.classList.add("active");
+          tab99.classList.remove("active");
+          planoPropria.classList.add("active");
+          plano99.classList.remove("active");
+        }
+      }
+
+      // 5. Abrir/Fechar Categorias de Dúvidas Frequentes
+      function toggleFaqCategoria(contentId, btnId) {
+        const content = document.getElementById(contentId);
+        const btn = document.getElementById(btnId);
+
+        content.classList.toggle("show");
+        btn.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>
