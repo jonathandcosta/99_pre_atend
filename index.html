@@ -788,7 +788,7 @@
               <div class="rate-box">
                 <div>
                   <span class="rate-value">8.9%</span>
-                  <span class="rate-old">12%</span>
+                  <span class="rate-old">17%</span>
                   <span class="rate-label">Comissão</span>
                 </div>
                 <span class="pill-green">Menor</span>
@@ -806,7 +806,7 @@
               <div class="rate-box">
                 <div>
                   <span class="rate-value">0%</span>
-                  <span class="rate-old">1.59%</span>
+                  <span class="rate-old">2.59%</span>
                   <span class="rate-label">Taxa de saque semanal</span>
                 </div>
                 <span class="pill-green">Grátis</span>
@@ -855,7 +855,7 @@
               <div class="rate-box neutral">
                 <div>
                   <span class="rate-value">10.9%</span>
-                  <span class="rate-old">12%</span>
+                  <span class="rate-old">19%</span>
                   <span class="rate-label">Comissão</span>
                 </div>
               </div>
@@ -872,7 +872,7 @@
               <div class="rate-box">
                 <div>
                   <span class="rate-value">0%</span>
-                  <span class="rate-old">1.59%</span>
+                  <span class="rate-old">2.59%</span>
                   <span class="rate-label">Taxa de saque semanal</span>
                 </div>
                 <span class="pill-green">Grátis</span>
@@ -947,19 +947,19 @@
             </a>
           </div>
 
-          <a
-            href="https://wa.me/SEU_NUMERO_AQUI?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%2099Food%20em%20Natal-RN."
-            target="_blank"
+          <button
+            type="button"
             class="btn-action btn-whats"
+            onclick="abrirModalDuvidas()"
           >
             <div>
-              Outras dúvidas (Menos urgentes)
+              Outras dúvidas (Menos urgentes*)
               <span class="btn-subtext"
                 >Cardápio, documentos ou visita na loja</span
               >
             </div>
             <span>WhatsApp</span>
-          </a>
+          </button>
         </div>
       </div>
 
@@ -991,15 +991,14 @@
               <ul>
                 <li>
                   <strong>Entrega feita pela 99:</strong> Comissão de
-                  <strong>8.9%</strong> (de 12%) + taxa de intermediação de 3.2%
-                  (sobre pagamentos no app) + custo logístico conforme
-                  quilometragem.
+                  <strong>8.9%</strong> + taxa de intermediação de 3.2% (sobre
+                  pagamentos no app) + custo logístico conforme quilometragem.
                 </li>
                 <li>
                   <strong>Entrega própria:</strong> Comissão de
-                  <strong>10.9%</strong> (de 12%) + taxa de intermediação de
-                  3.2% (sobre pagamentos no app) e <strong>isento</strong> de
-                  taxa de entrega.
+                  <strong>10.9%</strong> + taxa de intermediação de 3.2% (sobre
+                  pagamentos no app) e <strong>isento</strong> de taxa de
+                  entrega.
                 </li>
               </ul>
             </div>
@@ -1023,8 +1022,7 @@
                   loja.
                 </li>
                 <li>
-                  <strong>Cardápio e Logotipo</strong> (PDF, foto ou link de
-                  outro app).
+                  <strong>Cardápio</strong> (PDF, foto ou link de outro app).
                 </li>
               </ul>
             </div>
@@ -1180,7 +1178,7 @@
             <input
               type="text"
               id="lojaLancadaNome"
-              placeholder="Ex: Pizzaria Natal"
+              placeholder="Ex: Pizzaria Do Potiguar"
               required
             />
           </div>
@@ -1224,9 +1222,81 @@
       </div>
     </div>
 
+    <!-- POP-UP (MODAL): OUTRAS DÚVIDAS (MENOS URGENTES) -->
+    <div
+      class="modal-overlay"
+      id="modalOutrasDuvidas"
+      onclick="fecharModalDuvidasFora(event)"
+    >
+      <div class="modal-box">
+        <button
+          type="button"
+          class="modal-close"
+          onclick="fecharModalDuvidas()"
+        >
+          ×
+        </button>
+        <h3>Outras Dúvidas • Atendimento</h3>
+        <p>Preencha rapidamente para agilizar seu atendimento no WhatsApp:</p>
+
+        <form onsubmit="enviarOutrasDuvidas(event)">
+          <div class="form-group">
+            <label for="duvidaLoja">Nome da Loja *</label>
+            <input
+              type="text"
+              id="duvidaLoja"
+              placeholder="Ex: Comida do Potiguar"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="duvidaAssunto">Assunto principal</label>
+            <select id="duvidaAssunto">
+              <option value="Cardápio e Logotipo">Cardápio e Logotipo</option>
+              <option value="Documentos e CNPJ / Conta PJ">
+                Documentos e CNPJ / Conta PJ
+              </option>
+              <option value="Agendar visita presencial na loja">
+                Agendar visita presencial na loja
+              </option>
+              <option value="Dúvidas sobre taxas e prazos">
+                Dúvidas sobre taxas e prazos
+              </option>
+              <option value="Outro assunto">Outro assunto</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="duvidaDescricao">Descreva sua dúvida *</label>
+            <textarea
+              id="duvidaDescricao"
+              rows="4"
+              placeholder="Ex: Gostaria de agendar uma visita na minha loja no bairro Alecrim ou tirar dúvida sobre o envio do cardápio..."
+              required
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="btn-action btn-whats"
+            style="margin-bottom: 0"
+          >
+            <div>
+              Enviar pelo WhatsApp
+              <span class="btn-subtext"
+                >Iniciar conversa com os dados preenchidos</span
+              >
+            </div>
+            <span>➔</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
     <script>
       // COLOQUE SEU NÚMERO AQUI (apenas números, com DDI 55 e DDD 84)
-      const numeroWhatsApp = "5584999999999";
+      const numeroWhatsApp = "5584999043539";
 
       // 1. Controle inteligente das gavetas (abre a clicada e fecha as outras)
       function toggleGaveta(botaoClicado) {
@@ -1326,6 +1396,41 @@ Aguardo orientações para seguir com os documentos!`;
           planoPropria.classList.add("active");
           plano99.classList.remove("active");
         }
+      }
+
+      // Controle do Pop-up (Modal) "Outras dúvidas (Menos urgentes)"
+      function abrirModalDuvidas() {
+        document.getElementById("modalOutrasDuvidas").classList.add("open");
+      }
+
+      function fecharModalDuvidas() {
+        document.getElementById("modalOutrasDuvidas").classList.remove("open");
+      }
+
+      function fecharModalDuvidasFora(event) {
+        if (event.target.id === "modalOutrasDuvidas") {
+          fecharModalDuvidas();
+        }
+      }
+
+      function enviarOutrasDuvidas(event) {
+        event.preventDefault();
+
+        const lojaOuNome = document.getElementById("duvidaLoja").value.trim();
+        const assunto = document.getElementById("duvidaAssunto").value;
+        const descricao = document
+          .getElementById("duvidaDescricao")
+          .value.trim();
+
+        const mensagem = `Olá! Tenho uma dúvida sobre o *99Food Natal-RN* 💬
+
+• *Loja / Responsável:* ${lojaOuNome}
+• *Assunto:* ${assunto}
+• *Dúvida:* ${descricao}`;
+
+        const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+        window.open(url, "_blank");
+        fecharModalDuvidas();
       }
     </script>
   </body>
